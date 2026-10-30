@@ -1,5 +1,5 @@
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./Components/Navbar";
 import Hero from "./Components/Hero";
@@ -12,6 +12,7 @@ import Footer from "./Components/Footer";
 import Enquiry from "./Components/Enquiry";
 import StudentWorkPage from "./Components/StudentWorkPage";
 import CoursesPage from "./Components/CoursesPage";
+
 // HOME PAGE
 function HomePage() {
   return (
@@ -29,7 +30,7 @@ function HomePage() {
 // MAIN APP
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="min-h-screen w-full bg-[#FDFBF6]">
 
         {/* NAVBAR - ALL PAGES */}
@@ -37,17 +38,18 @@ function App() {
 
         {/* PAGE ROUTES */}
         <main>
-          {/* HOME PAGE */}
           <Routes>
+
+            {/* HOME PAGE */}
+            <Route
+              path="/"
+              element={<HomePage />}
+            />
+
             {/* COURSES PAGE */}
             <Route
               path="/courses"
               element={<CoursesPage />}
-            />
-
-            <Route
-              path="/"
-              element={<HomePage />}
             />
 
             {/* STUDENT WORK PAGE */}
@@ -61,15 +63,15 @@ function App() {
               path="/enquiry"
               element={<Enquiry />}
             />
+
           </Routes>
-           
         </main>
 
         {/* FOOTER - ALL PAGES */}
         <Footer />
 
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
